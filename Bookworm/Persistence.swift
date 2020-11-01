@@ -14,8 +14,9 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = Book(context: viewContext)
+            newItem.id = UUID()
+            newItem.rating = Int16(Int.random(in: 0...5))
         }
         do {
             try viewContext.save()
